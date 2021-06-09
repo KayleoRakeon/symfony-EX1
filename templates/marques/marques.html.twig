@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MarquesController!{% endblock %}
+
+{% block body %}
+
+    {% for type, messages in app.flashes %}
+        {% for un_message in messages%}
+            <p class="alert alert-{{type}}">{{ un_message }}</p>
+        {% endfor %}
+    {% endfor %}
+
+    <h2>Détails</h2>
+    <p>{{ marques.nom }}</p>
+    <p>{{ marques.pays }}</p>
+
+    {{ form(edit) }}
+
+{% endblock %}
+

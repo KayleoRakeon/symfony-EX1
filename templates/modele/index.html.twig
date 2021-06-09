@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {% for type, messages in app.flashes %}
+        {% for un_message in messages %}
+            <p class="alert alert-{{type}}">{{un_message}}</p>
+        {% endfor %}
+    {% endfor %}
+
+    {% if modele is empty %}
+        <p>Aucun modèle trouvé</p>
+    {% else %}
+        <h2>Modèles</h2>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Modèle</th>
+                    <th>Année</th>
+                    <th>Prix</th>
+                    <th>Climatisation</th>
+                    <th>Détails</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for mo in modele %}
+                    <tr>
+                        <td>{{ mo.modele }}</td>
+                        <td>{{ mo.annee }}</td>
+                        <td>{{ mo.prix }}</td>
+                        <td>{{ mo.climatisation }}</td>
+                        <td><a href="{{ path('un_modele', {'id':mo.id}) }}">Voir</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+
+    {{ form(ajout) }}
+
+{% endblock %}

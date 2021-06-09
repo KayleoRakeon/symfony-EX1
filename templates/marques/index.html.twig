@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Exercice 1 - CRDU Marques + Modèles{% endblock %}
+
+{% block body %}
+
+    {% for type, messages in app.flashes %}
+        {% for un_message in messages%}
+            <p class="alert alert-{{type}}">{{ un_message }}</p>
+        {% endfor %}
+    {% endfor %}
+
+    {% if marques is empty %}
+        <p>Il n'y a aucune marque</p>
+    {% else %}
+        <h2>Marques</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Pays</th>
+                    <th>Détails</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for m in marques %}
+                    <tr>
+                        <td>{{ m.nom }}</td>
+                        <td>{{ m.pays }}</td>
+                        <td><a href="{{ path('une_marque', {'id':m.id}) }}"
+                        title="Détails">Voir</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+
+    {{ form(ajout) }}
+
+{% endblock %}
