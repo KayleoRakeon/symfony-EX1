@@ -61,6 +61,24 @@ class ModeleController extends AbstractController
             'edit' => $form->createView(),
         ]);
     }
+
+    /**
+     * @Route("/modele/delete/{id}", name="delete_modele")
+     */
+    public function deleteModele(Modele $modele = null){
+        if($modele == null){
+            $this->addFlash('danger', 'Modèle non trouvé');
+            return $this->redirectToRoute('modele');
+        }
+
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($modele);
+        $em->flush();
+
+        $this->addFlash('success', 'Modèle supprimé');
+
+        return $this->redirectToRoute('modele');
+    }
 }
 
 

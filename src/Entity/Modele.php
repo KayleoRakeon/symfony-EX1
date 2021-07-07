@@ -37,6 +37,12 @@ class Modele
      */
     private $climatisation;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Marques::class, inversedBy="Modele")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $marques;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -86,6 +92,18 @@ class Modele
     public function setClimatisation(?string $climatisation): self
     {
         $this->climatisation = $climatisation;
+
+        return $this;
+    }
+
+    public function getMarques(): ?Marques
+    {
+        return $this->marques;
+    }
+
+    public function setMarques(?Marques $marques): self
+    {
+        $this->marques = $marques;
 
         return $this;
     }

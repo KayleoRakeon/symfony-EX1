@@ -20,6 +20,7 @@
                     <th>Nom</th>
                     <th>Pays</th>
                     <th>Détails</th>
+                    <th>Supprimer</th>
                 </tr>
             </thead>
             <tbody>
@@ -29,6 +30,8 @@
                         <td>{{ m.pays }}</td>
                         <td><a href="{{ path('une_marque', {'id':m.id}) }}"
                         title="Détails">Voir</a></td>
+                        <td><a href="{{ path('delete_marque', {'id':m.id}) }}"
+                        title="Détails">Suppimer</a></td>
                     </tr>
                 {% endfor %}
             </tbody>

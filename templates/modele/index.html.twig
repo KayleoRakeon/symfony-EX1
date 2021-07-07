@@ -21,6 +21,7 @@
                     <th>Prix</th>
                     <th>Climatisation</th>
                     <th>Détails</th>
+                    <th>Supprimer</th>
                 </tr>
             </thead>
             <tbody>
@@ -30,7 +31,10 @@
                         <td>{{ mo.annee }}</td>
                         <td>{{ mo.prix }}</td>
                         <td>{{ mo.climatisation }}</td>
-                        <td><a href="{{ path('un_modele', {'id':mo.id}) }}">Voir</a></td>
+                        <td><a href="{{ path('un_modele', {'id':mo.id}) }}"
+                        class="btn btn-success">Voir</a></td>
+                        <td><a href="{{ path('delete_modele', {'id':mo.id}) }}"
+                        class="btn btn-danger">Supprimer</a></td>
                     </tr>
                 {% endfor %}
             </tbody>
